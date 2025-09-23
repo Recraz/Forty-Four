@@ -314,8 +314,11 @@
         }
         
         function goBack() {
-            // Use browser's back functionality
-            window.history.back();
+            closeFullscreen();
+            // Small delay to ensure fullscreen closes before navigation
+            setTimeout(() => {
+                window.history.back();
+            }, 100);
         }
         
         // Handle ESC key and browser back button to close fullscreen
