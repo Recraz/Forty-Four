@@ -151,7 +151,7 @@
     </div>
 
     <div id="fullscreen-container">
-        <button class="floating-fullscreen-btn" onclick="closeFullscreen()" id="floating-btn" style="display: none;"></button>
+        <button class="floating-fullscreen-btn" onclick="goBack()" id="floating-btn" style="display: none;"></button>
         <iframe id="fullscreen-iframe" src=""></iframe>
     </div>
 
@@ -173,6 +173,8 @@
         function openFullscreen() {
             const container = document.getElementById('fullscreen-container');
             const iframe = document.getElementById('fullscreen-iframe');
+            
+            history.pushState({fullscreen: true}, '', '');
             
             // Set the iframe source
             iframe.src = EMBED_URL;
@@ -309,6 +311,11 @@
                 document.body.style.overflow = 'auto';
                 document.documentElement.style.overflow = 'auto';
             }, 100);
+        }
+        
+        function goBack() {
+            // Use browser's back functionality
+            window.history.back();
         }
         
         // Handle ESC key and browser back button to close fullscreen
