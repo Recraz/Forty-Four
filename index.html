@@ -152,7 +152,8 @@
     </div>
 
     <script>
-        const EMBED_URL = 'https://recraz.github.io/test';
+        const EMBED_URL = './embed-example.html'; // Local example with fullscreen button
+        // const EMBED_URL = 'https://recraz.github.io/test'; // Original URL
         
         function openDirectly() {
             // Always open in new window/tab for mobile compatibility
@@ -327,6 +328,23 @@
                     });
             });
         }
+        
+        // Listen for messages from the iframe
+        window.addEventListener('message', function(event) {
+            // Verify the origin for security (optional but recommended)
+            // if (event.origin !== 'https://recraz.github.io') return;
+            
+            if (event.data && event.data.action === 'requestFullscreen') {
+                const container = document.getElementById('fullscreen-container');
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                
+                if (isMobile) {
+                    handleMobileFullscreen(container, document.getElementById('fullscreen-iframe'));
+                } else {
+                    requestFullscreenMode(container);
+                }
+            }
+        });
     </script>
 </body>
 </html>
