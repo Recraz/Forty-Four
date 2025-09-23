@@ -180,23 +180,28 @@
             // Show the fullscreen container
             container.style.display = 'block';
             
+            // Add event listener to trigger fullscreen when iframe loads
+            iframe.onload = function() {
+                requestFullscreenMode(container);
+            };
+            
+            // Prevent scrolling on the body
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function requestFullscreenMode(container) {
             // Request fullscreen if supported
             if (container.requestFullscreen) {
                 container.requestFullscreen().catch(err => {
-                    console.log('Fullscreen failed, falling back to window open');
-                    window.open(EMBED_URL, '_blank');
+                    console.log('Fullscreen failed:', err);
                 });
             } else if (container.webkitRequestFullscreen) {
                 container.webkitRequestFullscreen();
             } else if (container.msRequestFullscreen) {
                 container.msRequestFullscreen();
             } else {
-                // Fallback for browsers that don't support fullscreen
-                window.open(EMBED_URL, '_blank');
+                console.log('Fullscreen API not supported');
             }
-            
-            // Prevent scrolling on the body
-            document.body.style.overflow = 'hidden';
         }
         
         function closeFullscreen() {
