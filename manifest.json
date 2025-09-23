@@ -1,7 +1,7 @@
 {
-  "name": "Fullscreen Embed App",
-  "short_name": "EmbedApp",
-  "description": "A PWA to open embedded URLs in fullscreen",
+  "name": "Forty Four",
+  "short_name": "Forty Four",
+  "description": "Forty Four - A PWA to open embedded URLs in fullscreen",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f5f5f5",

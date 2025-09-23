@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fullscreen-embed-v1';
+const CACHE_NAME = 'forty-four-v1';
 const urlsToCache = [
   './',
   './index.html',
